@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar no-border-bottom color="gray">
+    <ion-title>Équipe</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top color="gray">
+    <ion-segment [(ngModel)]="usersList" color="vivid-yellow">
+      <ion-segment-button value="junior_mentors">
+        Élèves
+      </ion-segment-button>
+      <ion-segment-button value="mentors">
+        Mentors
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div [ngSwitch]="usersList">
+    <ion-list *ngSwitchCase="'junior_mentors'">
+      <ion-item *ngFor="let student of students">
+        <h2 style="color: #f0ad4e">{{ student.firstName }} {{ student.name }}</h2>
+        <p>{{ student.email }}</p>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'mentors'">
+      <ion-item *ngFor="let mentor of mentors">
+        <h2 style="color: #f0ad4e">{{ mentor.firstName }} {{ mentor.name }}</h2>
+        <p>{{ mentor.email }}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

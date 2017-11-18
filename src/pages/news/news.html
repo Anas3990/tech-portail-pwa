@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar color="gray">
+    <ion-title>Nouvelles</ion-title>
+
+    <ion-buttons end showWhen="ios, windows">
+      <button ion-button (click)="showAddNewModal()">
+          <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let new of news">
+      <ion-item>
+        <h3>Le {{ new.timestamp }}</h3>
+        <h2 style="color: #f0ad4e">{{ new.title }}</h2>
+        <p>{{ new.body }}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Supprimer
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right showWhen="android">
+    <button ion-fab (click)="showAddNewModal()" color="vivid-yellow"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

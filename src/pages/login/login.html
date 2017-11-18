@@ -1,0 +1,25 @@
+<ion-content padding id="page9" style="background-color:#221E1F;">
+  <img src="../assets/imgs/T4K_ROUND.png" style="display:block;width:60%;height:auto;margin-left:auto;margin-right:auto;" />
+
+  <form (ngSubmit)="this.authService.signInWith(email, password)" id="login-form1">
+    <ion-list id="login-list1">
+      <ion-item id="login-input1">
+        <ion-input type="email" placeholder="Courriel" [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item id="login-input2">
+        <ion-input type="password" placeholder="Mot de passe" [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div class="spacer" style="height:5px;" id="login-spacer1"></div>
+
+    <button type="submit" id="login-button1" ion-button color="vivid-yellow" block>
+      Se connecter
+    </button>
+  </form>
+
+  <button (click)="this.authService.sentPasswordResetEmail()" id="login-button2" style="color:#F0AD4E;" ion-button clear block>
+    Mot de passe oublié ?
+  </button>
+</ion-content>
