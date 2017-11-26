@@ -2,6 +2,12 @@
 
   <ion-navbar no-border-bottom color="gray">
     <ion-title>Équipe</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
   <ion-toolbar no-border-top color="gray">
@@ -21,16 +27,24 @@
 <ion-content>
   <div [ngSwitch]="usersList">
     <ion-list *ngSwitchCase="'junior_mentors'">
-      <ion-item *ngFor="let student of students">
-        <h2 style="color: #f0ad4e">{{ student.firstName }} {{ student.name }}</h2>
-        <p>{{ student.email }}</p>
-      </ion-item>
+      <button ion-item *ngFor="let user of students" [navPush]="userInfosPage" [navParams]="{ userObject: user }" detail-push>
+        <ion-avatar item-start>
+          <img src="{{ user.photoUrl }}" onerror="this.src='assets/imgs/placeholder-profile-image.jpg'">
+        </ion-avatar>
+
+        <h2 style="color: #f0ad4e">{{ user.firstName }} {{ user.name }}</h2>
+        <p>{{ user.email }}</p>
+      </button>
     </ion-list>
     <ion-list *ngSwitchCase="'mentors'">
-      <ion-item *ngFor="let mentor of mentors">
-        <h2 style="color: #f0ad4e">{{ mentor.firstName }} {{ mentor.name }}</h2>
-        <p>{{ mentor.email }}</p>
-      </ion-item>
+      <button ion-item *ngFor="let user of mentors" [navPush]="userInfosPage" [navParams]="{ userObject: user }" detail-push>
+        <ion-avatar item-start>
+          <img src="{{ user.photoUrl }}" onerror="this.src='assets/imgs/placeholder-profile-image.jpg'">
+        </ion-avatar>
+
+        <h2 style="color: #f0ad4e">{{ user.firstName }} {{ user.name }}</h2>
+        <p>{{ user.email }}</p>
+      </button>
     </ion-list>
   </div>
 </ion-content>

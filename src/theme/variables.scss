@@ -43,7 +43,6 @@ gray:       #221e1f,
   vivid-yellow: #f6eb14
 );
 
-
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -55,7 +54,9 @@ gray:       #221e1f,
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
+// Inputs styling
+$text-input-md-highlight-color: #221e1f;
+$text-input-md-highlight-color-valid: #f6eb14;
 
 
 // App Windows Variables

@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="gray">
+    <ion-title>{{ new?.title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/placeholder-profile-image.jpg">
+      </ion-avatar>
+      <h2>{{ new?.author.name }}</h2>
+      <p style="color:#F0AD4E;">{{ new?.author.email }}</p>
+    </ion-item>
+
+    <ion-list-header>
+      Date
+
+      <ion-item>
+        <ion-icon name="time" item-start></ion-icon>
+        le {{ new?.timestamp }}
+      </ion-item>
+    </ion-list-header>
+
+    <ion-list-header>
+      Description
+
+      <ion-item>
+          <div style="white-space: pre-line;">
+            {{ new?.body }}   
+          </div>
+        </ion-item>
+    </ion-list-header> 
+  </ion-list>
+</ion-content>

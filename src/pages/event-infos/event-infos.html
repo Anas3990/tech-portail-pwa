@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar color="gray">
+    <ion-title>{{ event?.title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/placeholder-profile-image.jpg">
+      </ion-avatar>
+      <h2>{{ event?.author.name }}</h2>
+      <p style="color:#F0AD4E;" >{{ event?.author.email }}</p>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button (click)="showAddAttendanceModal()" color="vivid-yellow" block>Oui, je serai présent(e)</button>
+      <button ion-button (click)="postNonAttendance()" color="gray" block>Non, je serai absent(e)</button>
+    </ion-item>
+
+    <ion-list-header>
+      Horaire
+
+      <ion-item>
+        <ion-icon name="time" item-start></ion-icon>
+        du {{ event?.startDate }}, à {{ event?.startDate }}
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="time" item-start></ion-icon>
+        au {{ event?.startDate }}, à {{ event?.endDate }}
+      </ion-item>
+    </ion-list-header>
+
+    <ion-list-header>
+      Description
+
+      <ion-item>
+        <div style="white-space: pre-line;">
+          {{ event?.body }}     
+        </div>
+      </ion-item>
+    </ion-list-header>
+  </ion-list>
+</ion-content>

@@ -1,8 +1,8 @@
 {
   "name": "tech-portail-pwa",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "version": "1.0.0",
+  "author": "Équipe Team 3990 : Tech For Kids",
+  "homepage": "https://www.team3990.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -20,10 +20,13 @@
     "@angular/http": "5.0.1",
     "@angular/platform-browser": "5.0.1",
     "@angular/platform-browser-dynamic": "5.0.1",
+    "@ionic-native/badge": "^4.4.2",
     "@ionic-native/core": "4.4.0",
+    "@ionic-native/date-picker": "^4.4.2",
     "@ionic-native/fcm": "^4.4.2",
+    "@ionic-native/push": "^4.4.2",
     "@ionic-native/splash-screen": "4.4.0",
-    "@ionic-native/status-bar": "4.4.0",
+    "@ionic-native/status-bar": "^4.4.0",
     "@ionic/pro": "1.0.16",
     "@ionic/storage": "2.1.3",
     "angularfire2": "^5.0.0-rc.3",
@@ -33,30 +36,33 @@
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-whitelist": "^1.3.1",
+    "cordova-windows": "5.0.0",
     "firebase": "^4.6.2",
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
+    "phonegap-plugin-push": "^2.1.0",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.18"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.1.2",
+    "@ionic/app-scripts": "^3.1.2",
     "typescript": "2.4.2"
   },
-  "description": "An Ionic project",
+  "description": "Équipe Team 3990: Tech for Kids web portal for managing internal news, meetings, mentor schedules, mail lists, team members contact info, etc.",
   "cordova": {
     "plugins": {
-      "cordova-plugin-fcm": {},
       "ionic-plugin-keyboard": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {}
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-fcm": {},
+      "cordova-plugin-splashscreen": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "windows"
     ]
   }
 }

@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar color="gray">
+    <ion-title>{{ user.firstName }} {{ user.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{ user.photoUrl }}" onerror="this.src='assets/imgs/placeholder-profile-image.jpg'">
+      </ion-avatar>
+      <h2>{{ user?.firstName }}</h2>
+      <p style="color:#F0AD4E;" >{{ user?.email }}</p>
+    </ion-item>
+
+    <ion-list-header>
+      Informations personnelles
+
+      <ion-item>
+        {{ user?.firstName }}
+      </ion-item>
+
+      <ion-item>
+        {{ user?.name }}
+      </ion-item>
+    </ion-list-header>
+
+    <ion-list-header>
+      Informations de contact
+
+      <ion-item>
+        <ion-icon name="phone-portrait" item-start></ion-icon>
+        {{ user?.mobilePhoneNumber }}
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="call" item-start></ion-icon>
+        {{ user?.homePhoneNumber1 }}
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="call" item-start></ion-icon>
+        {{ user?.homePhoneNumber2 }}
+      </ion-item>
+    </ion-list-header>
+  </ion-list>
+</ion-content>

@@ -2,7 +2,17 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 //
+import { ModalController } from 'ionic-angular';
+
+//
+import { AddEventPage } from './../add-event/add-event';
+import { EventInfosPage } from './../event-infos/event-infos';
+
+//
 import { DatabaseProvider } from './../../providers/database/database';
+
+//
+import { Event } from './../../models/Event';
 
 @IonicPage()
 @Component({
@@ -13,13 +23,17 @@ export class EventsPage {
   eventsList: string = "upComing";
 
   //
-  upComingEvents: any[];
-  pastEvents: any[];
+  upComingEvents: Event[];
+  pastEvents: Event[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dbService: DatabaseProvider) {
+  //
+  eventInfosPage: any;
+
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private dbService: DatabaseProvider) {
+    this.eventInfosPage = EventInfosPage;
   }
 
-  ionViewDidLoad() {
+  ionViewWillLoad() {
     this.dbService.getUpComingEvents().subscribe(upComingEvents => {
       this.upComingEvents = upComingEvents;
     });
@@ -29,4 +43,8 @@ export class EventsPage {
     });
   }
 
+  showAddEventModal() {
+    let addNewModal = this.modalCtrl.create(AddEventPage);
+    addNewModal.present();
+  }
 }

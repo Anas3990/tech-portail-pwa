@@ -32,10 +32,10 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "503625371219-37r3u89akopprid6a9ifp73b7anshmqv.apps.googleusercontent.com",
+              "client_id": "503625371219-5p391esfd9gnimsqhncoske7lati03lb.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.team3990.techportail"
+                "bundle_id": "com.team3990"
               }
             },
             {

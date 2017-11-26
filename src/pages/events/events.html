@@ -21,35 +21,47 @@
 <ion-content>
   <div [ngSwitch]="eventsList">
     <ion-list *ngSwitchCase="'upComing'">
-      <ion-item-sliding *ngFor="let event of upComingEvents">
-        <ion-item>
-          <h3>Le {{ event.date }}, de {{ event.startDate }} à {{ event.endDate }}</h3>
+      <ion-item-sliding>
+        <ion-item *ngFor="let event of upComingEvents" [navPush]="eventInfosPage" [navParams]="{ eventObject: event }">
+          <h3>Le {{ event.startDate }}, de {{ event.startDate }} à {{ event.endDate }}</h3>
           <h2 style="color: #f0ad4e">{{ event.title }}</h2>
           <p>{{ event.body }}</p>
         </ion-item>
         <ion-item-options side="right">
+          <button ion-button color="vivid-yellow">
+            <ion-icon name="md-create"></ion-icon>
+            Modifier
+          </button>
           <button ion-button color="danger">
             <ion-icon name="trash"></ion-icon>
             Supprimer
-          </button>
+            </button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
 
     <ion-list *ngSwitchCase="'past'">
-      <ion-item-sliding *ngFor="let event of pastEvents">
-        <ion-item>
-          <h3>Le {{ event.date }}, de {{ event.startDate }} à {{ event.endDate }}</h3>
+      <ion-item-sliding>
+        <ion-item *ngFor="let event of pastEvents" [navPush]="eventInfosPage" [navParams]="{ eventObject: event }">
+          <h3>Le {{ event.startDate }}, de {{ event.startDate }} à {{ event.endDate }}</h3>
           <h2 style="color: #f0ad4e">{{ event.title }}</h2>
           <p>{{ event.body }}</p>
         </ion-item>
         <ion-item-options side="right">
+          <button ion-button color="vivid-yellow">
+            <ion-icon name="md-create"></ion-icon>
+            Modifier
+          </button>
           <button ion-button color="danger">
             <ion-icon name="trash"></ion-icon>
             Supprimer
-          </button>
+            </button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
   </div>
+
+  <ion-fab bottom right showWhen="android">
+    <button ion-fab (click)="showAddEventModal()" color="vivid-yellow"><ion-icon name="md-create"></ion-icon></button>
+  </ion-fab>
 </ion-content>
