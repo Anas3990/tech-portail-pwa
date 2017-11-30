@@ -1,5 +1,6 @@
 export interface User{
     uid: string
+    profilePicture: any
     email: string
     firstName?: string
     name?: string

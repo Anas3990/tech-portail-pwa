@@ -17,10 +17,19 @@
       <p style="color:#F0AD4E;" >{{ event?.author.email }}</p>
     </ion-item>
 
-    <ion-item>
-      <button ion-button (click)="showAddAttendanceModal()" color="vivid-yellow" block>Oui, je serai présent(e)</button>
-      <button ion-button (click)="postNonAttendance()" color="gray" block>Non, je serai absent(e)</button>
-    </ion-item>
+    <ion-list-header>
+      Présences
+
+      <ion-item>
+        <button ion-button (click)="showAddAttendanceModal()" color="vivid-yellow" block>Oui, je serai présent(e)</button>
+        <button ion-button (click)="postNonAttendance()" color="gray" block>Non, je serai absent(e)</button>
+      </ion-item>
+
+      <button ion-item (click)="showAttendancesModal()">
+          Consulter la liste des présences
+      </button>  
+    </ion-list-header>
+    
 
     <ion-list-header>
       Horaire

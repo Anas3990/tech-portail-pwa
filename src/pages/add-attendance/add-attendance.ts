@@ -95,7 +95,7 @@ export class AddAttendancePage {
     let timestamp = firebase.firestore.FieldValue.serverTimestamp()
 
     this.attendancesCollection.doc(this.userId).set({
-      name: this.userName,
+      attendantName: this.userName,
       present: true,
       attendanceStartsAt: this.attendanceStart,
       attendanceEndsAt: this.attendanceEnd,

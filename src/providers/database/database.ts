@@ -11,6 +11,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 //
 import { New } from './../../models/New';
 import { Event } from './../../models/Event';
+import { Attendance } from './../../models/Attendance';
 import { User } from './../../models/User';
 
 @Injectable()
@@ -32,6 +33,11 @@ export class DatabaseProvider {
 
   eventDoc: AngularFirestoreDocument<Event>;
   event: Observable<Event>;
+
+  //
+  attendancesCollection: AngularFirestoreCollection<Attendance>;
+
+  attendances: Observable<Attendance[]>;
 
   //
   studentsCollection: AngularFirestoreCollection<User>;
@@ -90,6 +96,22 @@ export class DatabaseProvider {
     });
 
     return this.pastEvents;
+  }
+
+  getAttendances(id) {
+    this.attendancesCollection = this.afs.collection('events').doc(id).collection("attendances", ref => {
+      return ref.where('present', '==', true);
+    });
+
+    this.attendances = this.attendancesCollection.snapshotChanges().map(array => {
+      return array.map(snapshot => {
+        const data = snapshot.payload.doc.data() as Attendance;
+        const id = snapshot.payload.doc.id;
+        return { id, ...data };
+      })
+    });
+
+    return this.attendances;
   }
 
   getStudents() {
@@ -162,6 +184,45 @@ export class DatabaseProvider {
   }
 
   deleteEvent(id) {
+    let alert = this.alertCtrl.create({
+      title: "Supprimer l'évènement ?",
+      message: "Êtes-vous sûrs de vouloir supprimer cet évènement ? Cette action est irréversible.",
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel'
+        },
+        {
+          text: 'Oui',
+          handler: data => {
+            this.newDoc = this.afs.doc('events/' + id);
+            this.newDoc.delete()
+              .then(_ => {
+                let toast = this.toastCtrl.create({
+                  message: "L'évènement a été supprimé avec succès.",
+                  duration: 2000,
+                  showCloseButton: false
+                });
 
+                toast.present();
+              })
+              .catch(error => {
+                let alert = this.alertCtrl.create({
+                  title: 'Oups !',
+                  message: "Une erreur est survenue lors de la tentative de suppression de l'évènement : " + error,
+                  buttons: [{
+                    text: 'Ok',
+                    role: 'cancel'
+                  }]
+                });
+          
+                alert.present();
+              });
+          }
+        }
+      ]
+    });
+
+    alert.present();
   }
 }

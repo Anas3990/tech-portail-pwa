@@ -10,6 +10,7 @@ import { AuthProvider } from './../../providers/auth/auth';
 
 //
 import { AddAttendancePage } from './../add-attendance/add-attendance';
+import { AttendancesPage } from './../attendances/attendances';
 
 //
 import { Event } from './../../models/Event';
@@ -49,11 +50,16 @@ export class EventInfosPage {
     addAttendanceModal.present();
   }
 
+  showAttendancesModal() {
+    let attendancesModal = this.modalCtrl.create(AttendancesPage, { eventId: this.event.id });
+    attendancesModal.present();
+  }
+
   postNonAttendance() {
     let timestamp = firebase.firestore.FieldValue.serverTimestamp()
 
     this.attendancesCollection.doc(this.userId).set({
-      name: this.userName,
+      nonAttendantName: this.userName,
       present: false,
       confirmedAt: timestamp
     })

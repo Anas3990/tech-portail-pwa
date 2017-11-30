@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-//
-import { ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 //
 import { AddEventPage } from './../add-event/add-event';
@@ -29,7 +26,7 @@ export class EventsPage {
   //
   eventInfosPage: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private dbService: DatabaseProvider) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dbService: DatabaseProvider) {
     this.eventInfosPage = EventInfosPage;
   }
 

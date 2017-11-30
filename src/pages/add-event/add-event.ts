@@ -25,11 +25,10 @@ import { Event } from './../../models/Event';
       <ion-title>Ajouter un évènement</ion-title>
 
       <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text color="light" showWhen="ios">Annuler</span>
-        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
-      </button>
-    </ion-buttons>
+        <button ion-button (click)="dismiss()">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-buttons>
     </ion-navbar>
   
   </ion-header>
@@ -62,7 +61,7 @@ import { Event } from './../../models/Event';
 
         <ion-item>
           <ion-label>Fin</ion-label>
-          <ion-datetime doneText="OK" cancelText="ANNULER" [min]="todayDate" pickerFormat="MMM DD, YYYY HH:mm" displayFormat="Le DDDD DD MMM YYYY, à HH:mm" [(ngModel)]="endDate" name="endDate" formControlName="endDate"></ion-datetime>
+          <ion-datetime doneText="OK" cancelText="ANNULER" [min]="todayDate" pickerFormat="HH:mm" displayFormat="HH:mm" [(ngModel)]="endDate" name="endDate" formControlName="endDate"></ion-datetime>
         </ion-item>
       </ion-list>
         
@@ -176,6 +175,8 @@ export class AddEventPage {
             this.dismiss();
             loader.dismiss();
           }).catch(error => {
+            loader.dismiss();
+            
             let alert = this.alertCtrl.create({
               title: 'Oups !',
               message: "Une erreur est survenue lors de la tentative de publication de l'évènement : " + error,

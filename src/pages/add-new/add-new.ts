@@ -146,6 +146,8 @@ export class AddNewPage {
         this.dismiss();
         loader.dismiss();
       }).catch(error => {
+        loader.dismiss();
+        
         let alert = this.alertCtrl.create({
           title: 'Oups !',
           message: 'Une erreur est survenue lors de la tentative de publication de la nouvelle :' + error,
