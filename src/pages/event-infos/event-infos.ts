@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ToastController, AlertController  } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ToastController, AlertController } from 'ionic-angular';
 
 //
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -16,7 +16,6 @@ import { AttendancesPage } from './../attendances/attendances';
 import { Event } from './../../models/Event';
 import { Attendance } from './../../models/Attendance';
 
-@IonicPage()
 @Component({
   selector: 'page-event-infos',
   templateUrl: 'event-infos.html',

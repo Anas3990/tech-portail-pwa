@@ -7,15 +7,27 @@ import 'rxjs/add/operator/map';
 
 //
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 //
 import { New } from './../../models/New';
 import { Event } from './../../models/Event';
+import { UserAttendance } from './../../models/UserAttendance';
 import { Attendance } from './../../models/Attendance';
 import { User } from './../../models/User';
 
 @Injectable()
 export class DatabaseProvider {
+  //
+  userAttendancesCollectionForUpcomingEvents: AngularFirestoreCollection<UserAttendance>;
+  userAttendancesCollectionForPastEvents: AngularFirestoreCollection<UserAttendance>;
+
+  userAttendancesForUpcomingEvents: Observable<UserAttendance[]>;
+  userAttendancesForPastEvents: Observable<UserAttendance[]>;
+
+  userAttendanceDoc: AngularFirestoreDocument<UserAttendance>
+  userAttendance: Observable<UserAttendance>
+
   //
   newsCollection: AngularFirestoreCollection<New>;
 
@@ -46,7 +58,41 @@ export class DatabaseProvider {
   mentorsCollection: AngularFirestoreCollection<User>;
   mentors: Observable<User[]>;
 
-  constructor(private afs: AngularFirestore, private alertCtrl: AlertController, private toastCtrl: ToastController) {}
+  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth, private alertCtrl: AlertController, private toastCtrl: ToastController) {}
+
+  getUserAttendancesForUpcomingEvents() {
+    this.userAttendancesCollectionForUpcomingEvents = this.afs.collection('users').doc(this.afAuth.auth.currentUser.uid).collection('attendances', ref => {
+      return ref.where('eventStartDate', '>', new Date());
+    });
+
+    this.userAttendancesForUpcomingEvents = this.userAttendancesCollectionForUpcomingEvents.snapshotChanges().map(array => {
+      return array.map(snapshot => {
+        const data = snapshot.payload.doc.data() as UserAttendance;
+        const id = snapshot.payload.doc.id;
+
+        return { id, ...data };
+      })
+    });
+
+    return this.userAttendancesForUpcomingEvents
+  }
+
+  getUserAttendancesForPastEvents() {
+    this.userAttendancesCollectionForPastEvents = this.afs.collection('users').doc(this.afAuth.auth.currentUser.uid).collection('attendances', ref => {
+      return ref.where('eventStartDate', '<', new Date());
+    });
+
+    this.userAttendancesForPastEvents = this.userAttendancesCollectionForPastEvents.snapshotChanges().map(array => {
+      return array.map(snapshot => {
+        const data = snapshot.payload.doc.data() as UserAttendance;
+        const id = snapshot.payload.doc.id;
+
+        return { id, ...data };
+      })
+    });
+
+    return this.userAttendancesForPastEvents
+  }
 
   //
   getNews() {  
@@ -68,7 +114,7 @@ export class DatabaseProvider {
 
   getUpComingEvents() {
     this.upComingEventsCollection = this.afs.collection('events', ref => {
-      return ref.where('past', '==', false).orderBy('timestamp', 'desc');
+      return ref.where('startDate', '>', new Date());
     });;
 
     this.upComingEvents = this.upComingEventsCollection.snapshotChanges().map(array => {
@@ -84,7 +130,7 @@ export class DatabaseProvider {
 
   getPastEvents() {
     this.pastEventsCollection = this.afs.collection('events', ref => {
-      return ref.where('past', '==', true).orderBy('timestamp', 'desc');
+      return ref.where('startDate', '<', new Date());
     });
 
     this.pastEvents = this.pastEventsCollection.snapshotChanges().map(array => {
@@ -116,7 +162,7 @@ export class DatabaseProvider {
 
   getStudents() {
     this.studentsCollection = this.afs.collection('users', ref => {
-      return ref.where('role', '==', 'junior_mentor').orderBy("name");
+      return ref.where('approved', '==', true).where('roles.mentor', '==', false).orderBy("name");
     });
 
     this.students = this.studentsCollection.valueChanges();
@@ -126,7 +172,7 @@ export class DatabaseProvider {
 
   getMentors() {
     this.mentorsCollection = this.afs.collection('users', ref => {
-      return ref.where('role', '==', 'mentor').orderBy("name");
+      return ref.where('approved', '==', true).where('roles.mentor', '==', true).orderBy("name");
     });
 
     this.mentors = this.mentorsCollection.valueChanges();

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 
 //
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -14,10 +14,8 @@ import { AuthProvider } from './../../providers/auth/auth';
 //
 import { Attendance } from './../../models/Attendance';
 
-@IonicPage()
 @Component({
   selector: 'page-add-attendance',
-  templateUrl: 'add-attendance.html',
   template: `
   <ion-header>
   
@@ -71,7 +69,7 @@ export class AddAttendancePage {
   //
   attendancesCollection: AngularFirestoreCollection<Attendance>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController, private formBuilder: FormBuilder, private loadingCtrl: LoadingController, private alertCtrl: AlertController, private afs: AngularFirestore, public authService: AuthProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController, private formBuilder: FormBuilder, private alertCtrl: AlertController, private afs: AngularFirestore, public authService: AuthProvider) {
     //
     this.eventId = this.navParams.get('eventId');
 

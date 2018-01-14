@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import { NavController, NavParams, ViewController} from 'ionic-angular';
 
 //
 import { New } from '../../Models/New';
 
-@IonicPage()
 @Component({
   selector: 'page-edit-new',
-  templateUrl: 'edit-new.html',
   template: `
   <ion-header>
     <ion-navbar color="gray">

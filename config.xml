@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.team3990.techportail" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.team3990.techportail" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Tech Portail</name>
     <description>Équipe Team 3990: Tech for Kids web portal for managing internal news, meetings, mentor schedules, mail lists, team members contact info, etc.</description>
     <author email="general@team3990.com" href="https://www.team3990.com/">Équipe Team 3990 : Tech For Kids</author>
@@ -21,6 +21,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#333333" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />

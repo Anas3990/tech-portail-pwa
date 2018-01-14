@@ -10,18 +10,14 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/placeholder-profile-image.jpg">
-      </ion-avatar>
       <h2>{{ new?.author.name }}</h2>
       <p style="color:#F0AD4E;">{{ new?.author.email }}</p>
     </ion-item>
 
     <ion-list-header>
-      Date
+      Date de création
 
       <ion-item>
-        <ion-icon name="time" item-start></ion-icon>
         le {{ new?.timestamp }}
       </ion-item>
     </ion-list-header>

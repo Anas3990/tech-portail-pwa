@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-@IonicPage()
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
 })
 export class DashboardPage {
 
-  constructor(private platform: Platform, public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 }

@@ -8,11 +8,8 @@
 
 
 <ion-content>
-  <ion-list>
+  <ion-list no-lines>
     <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/placeholder-profile-image.jpg">
-      </ion-avatar>
       <h2>{{ event?.author.name }}</h2>
       <p style="color:#F0AD4E;" >{{ event?.author.email }}</p>
     </ion-item>
@@ -25,22 +22,24 @@
         <button ion-button (click)="postNonAttendance()" color="gray" block>Non, je serai absent(e)</button>
       </ion-item>
 
-      <button ion-item (click)="showAttendancesModal()">
-          Consulter la liste des présences
-      </button>  
     </ion-list-header>
-    
 
+    <ion-list-header>
+      Liste des présences
+
+      <button ion-item (click)="showAttendancesModal()">
+        Consulter la liste des présences
+      </button> 
+    </ion-list-header>
+  
     <ion-list-header>
       Horaire
 
       <ion-item>
-        <ion-icon name="time" item-start></ion-icon>
         du {{ event?.startDate }}, à {{ event?.startDate }}
       </ion-item>
 
       <ion-item>
-        <ion-icon name="time" item-start></ion-icon>
         au {{ event?.startDate }}, à {{ event?.endDate }}
       </ion-item>
     </ion-list-header>

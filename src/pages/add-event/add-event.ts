@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController, AlertController } from 'ionic-angular';
 
 //
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -14,10 +14,8 @@ import { AuthProvider } from './../../providers/auth/auth';
 //
 import { Event } from './../../models/Event';
 
-@IonicPage()
 @Component({
   selector: 'page-add-event',
-  templateUrl: 'add-event.html',
   template: `
   <ion-header>
   
@@ -37,9 +35,6 @@ import { Event } from './../../models/Event';
   <ion-content class="outer-content"> 
     <ion-list>
       <ion-item>
-        <ion-avatar item-start>
-          <img src="assets/imgs/placeholder-profile-image.jpg">
-        </ion-avatar>
         <h2>{{ (authService.user | async)?.firstName }} {{ (authService.user | async)?.name }}</h2>
         <p style="color:#F0AD4E;" >{{ (authService.user | async)?.email }}</p>
       </ion-item>

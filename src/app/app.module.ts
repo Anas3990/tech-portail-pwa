@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+// Pour traduire en français le format des dates
+
+
 // Plugins natifs de l'application
 import { FCM } from '@ionic-native/fcm';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,6 +29,8 @@ import { NewInfosPage } from './../pages/new-infos/new-infos';
 import { AddNewPage } from './../pages/add-new/add-new';
 import { EditNewPage } from './../pages/edit-new/edit-new';
 
+import { MyAttendancesPage } from './../pages/my-attendances/my-attendances';
+
 import { EventsPage } from './../pages/events/events'
 import { EventInfosPage } from './../pages/event-infos/event-infos';
 import { AttendancesPage } from './../pages/attendances/attendances';
@@ -47,6 +52,7 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     LoginPage,
     DashboardPage,
+    MyAttendancesPage,
     NewsPage,
     NewInfosPage,
     AddNewPage,
@@ -77,6 +83,7 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     LoginPage,
     DashboardPage,
+    MyAttendancesPage,
     NewsPage,
     NewInfosPage,
     AddNewPage,
@@ -94,7 +101,7 @@ import { AuthProvider } from '../providers/auth/auth';
     FCM,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     DatabaseProvider,
     AuthProvider
   ]

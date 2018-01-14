@@ -17,17 +17,16 @@
 
 </ion-header>
 
-
 <ion-content>
   <div [ngSwitch]="eventsList">
     <ion-list *ngSwitchCase="'upComing'">
       <ion-item-sliding *ngFor="let event of upComingEvents">
         <ion-item [navPush]="eventInfosPage" [navParams]="{ eventObject: event }">
-          <h3>Le {{ event.startDate }}, de {{ event.startDate }} à {{ event.endDate }}</h3>
+          <h3>Le {{ event.startDate | date:'fullDate' }}, de {{ event.startDate | date:'shortTime' }} à {{ event.endDate | date:'shortTime' }}</h3>
           <h2 style="color: #f0ad4e">{{ event.title }}</h2>
           <p>{{ event.body }}</p>
         </ion-item>
-        <ion-item-options side="right">
+        <ion-item-options side="right" *ngIf="authService.canWrite(user)">
           <button ion-button color="vivid-yellow">
             <ion-icon name="md-create"></ion-icon>
             Modifier
@@ -61,7 +60,7 @@
     </ion-list>
   </div>
 
-  <ion-fab bottom right showWhen="android">
+  <ion-fab bottom right *ngIf="authService.canWrite(user)">
     <button ion-fab (click)="showAddEventModal()" color="vivid-yellow"><ion-icon name="md-create"></ion-icon></button>
   </ion-fab>
 </ion-content>

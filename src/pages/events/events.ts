@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 //
 import { AddEventPage } from './../add-event/add-event';
@@ -7,11 +7,12 @@ import { EventInfosPage } from './../event-infos/event-infos';
 
 //
 import { DatabaseProvider } from './../../providers/database/database';
+import { AuthProvider } from './../../providers/auth/auth';
 
 //
 import { Event } from './../../models/Event';
+import { User } from './../../models/User';
 
-@IonicPage()
 @Component({
   selector: 'page-events',
   templateUrl: 'events.html',
@@ -24,9 +25,12 @@ export class EventsPage {
   pastEvents: Event[];
 
   //
+  user: User;
+
+  //
   eventInfosPage: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dbService: DatabaseProvider) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public dbService: DatabaseProvider, public authService: AuthProvider) {
     this.eventInfosPage = EventInfosPage;
   }
 
@@ -37,6 +41,11 @@ export class EventsPage {
 
     this.dbService.getPastEvents().subscribe(pastEvents => {
       this.pastEvents = pastEvents;
+    });
+
+    //
+    this.authService.user.subscribe(user => {
+      this.user = user;
     });
   }
 

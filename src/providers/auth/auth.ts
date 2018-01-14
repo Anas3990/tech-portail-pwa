@@ -26,4 +26,23 @@ export class AuthProvider {
       }
     })
   }
+  
+  //
+  private checkAuthorization(user: User, allowedRoles: string[]) {
+    if (!user) return false
+
+    for (const role of allowedRoles) {
+      if (user.roles[role]) {
+        return true
+      }
+    }
+    
+    return false
+  }
+
+  canWrite(user: User): boolean {
+    const allowed = ['admin', 'mentor']
+    
+    return this.checkAuthorization(user, allowed)
+  }
 }

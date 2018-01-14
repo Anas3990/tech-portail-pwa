@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, App, NavController, NavParams, AlertController  } from 'ionic-angular';
+import { App, NavController, NavParams, AlertController  } from 'ionic-angular';
 
 // Permet d'utiliser les fonctions d'AngularFire afin de pouvoir authentifier un utilisateur
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -17,7 +17,6 @@ import { LoginPage } from './../login/login';
 //
 import { User } from '../../models/User';
 
-@IonicPage()
 @Component({
   selector: 'page-team',
   templateUrl: 'team.html',

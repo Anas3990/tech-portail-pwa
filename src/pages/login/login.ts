@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 
 //
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -13,10 +13,8 @@ import { FCM } from '@ionic-native/fcm';
 //
 import { TabsPage } from './../tabs/tabs';
 
-@IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html',
   template: `
   <ion-content padding style="background-color:#221E1F;">
     <form [formGroup]="loginForm" (ngSubmit)="signInWith(email, password)" class="center-form">

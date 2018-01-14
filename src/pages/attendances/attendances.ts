@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 //
 import { DatabaseProvider } from './../../providers/database/database';
@@ -7,7 +7,6 @@ import { DatabaseProvider } from './../../providers/database/database';
 //
 import { Attendance } from './../../models/Attendance';
 
-@IonicPage()
 @Component({
   selector: 'page-attendances',
   templateUrl: 'attendances.html',

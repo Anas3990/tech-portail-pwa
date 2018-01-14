@@ -37,8 +37,9 @@
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-whitelist": "^1.3.1",
     "cordova-windows": "5.0.0",
+    "enhanced-resolve": "^4.0.0-beta.2",
     "firebase": "^4.6.2",
-    "ionic-angular": "3.9.2",
+    "ionic-angular": "nightly",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "phonegap-plugin-push": "^2.1.0",
@@ -47,7 +48,7 @@
     "zone.js": "0.8.18"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "^3.1.2",
+    "@ionic/app-scripts": "nightly",
     "typescript": "2.4.2"
   },
   "description": "Équipe Team 3990: Tech for Kids web portal for managing internal news, meetings, mentor schedules, mail lists, team members contact info, etc.",
